@@ -3,15 +3,25 @@ import styles from './profile.module.css'
 import wallpaper from '../../assets/wallpaper.jpg'
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {Posts} from "./Posts/Posts";
+import {postType} from "../../index";
 
-export const Profile = () => {
+type ProfilePropsType = {
+    postsData: Array<postType>
+}
+
+export const Profile = (props: ProfilePropsType) => {
+
+    const {
+        postsData
+    } = props
+
     return (
         <div className={styles.profile}>
             <div className={styles.wallpaper}>
                 <img src={wallpaper} alt={'wallpaper'}/>
             </div>
             <ProfileInfo/>
-            <Posts/>
+            <Posts postsData={postsData}/>
         </div>
     )
 }

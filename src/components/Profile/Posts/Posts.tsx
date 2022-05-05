@@ -1,18 +1,22 @@
 import React from "react";
 import {PostItem} from "./PostItem/PostItem";
+import {postType} from "../../../index";
 
-const postsState = [
-    {id: '1', message: 'some message',},
-    {id: '2', message: 'some message',},
-    {id: '3', message: 'new message',},
-]
+type PostsPropsType = {
+    postsData: Array<postType>
+}
 
-export const Posts = () => {
+export const Posts = (props: PostsPropsType) => {
+
+    const {
+        postsData
+    } = props
+
     return (
         <div>
             <h2>Мои посты</h2>
             <div>
-                {postsState.map(post => (
+                {postsData.map(post => (
                     <PostItem message={post.message}/>
                 ))}
             </div>

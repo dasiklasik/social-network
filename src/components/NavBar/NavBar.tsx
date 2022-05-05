@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styles from './navBar.module.css'
 
 export const NavBar = () => {
@@ -6,19 +7,19 @@ export const NavBar = () => {
         <div className={styles.navBar}>
             <ul>
                 <li>
-                    <a>Профиль</a>
+                    <NavLink className={({isActive}) => isActive ? styles.active: ''} to={'/profile'}>Профиль</NavLink>
                 </li>
                 <li>
-                    <a>Сообщения</a>
+                    <NavLink className={({isActive}) => isActive ? styles.active: ''} to={'/dialogs'}>Сообщения</NavLink>
                 </li>
                 <li>
-                    <a>Новости</a>
+                    <NavLink className={({isActive}) => isActive ? styles.active: ''} to={'/feed'}>Новости</NavLink>
                 </li>
                 <li>
-                    <a>Музыка</a>
+                    <NavLink className={({isActive}) => isActive ? styles.active: ''} to={'music'}>Музыка</NavLink>
                 </li>
                 <li>
-                    <a>Настройки</a>
+                    <NavLink className={({isActive}) => isActive ? styles.active: ''} to={'settings'}>Настройки</NavLink>
                 </li>
             </ul>
         </div>
