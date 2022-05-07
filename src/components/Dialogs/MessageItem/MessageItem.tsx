@@ -1,5 +1,5 @@
 import React from "react";
-import {messageType} from "./Dialogs";
+import {messageType} from "../../../index";
 
 type MessageItemPropsType = {
     messageInfo: messageType

@@ -1,7 +1,7 @@
 import React from "react";
-import {dialogType} from "../Dialogs";
 import {NavLink} from "react-router-dom";
 import styles from './DialogItem.module.css'
+import {dialogType} from "../../../index";
 
 type DialogItemPropsType = {
     dialogInfo: dialogType

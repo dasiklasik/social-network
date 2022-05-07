@@ -28,7 +28,10 @@ const App = (props: AppPropsType) => {
                 <Routes>
                     <Route path={'/'} element={<Navigate to={'/profile'}/>}/>
                     <Route path={'/profile'} element={<Profile postsData={state.postsData}/>}/>
-                    <Route path={'/dialogs/*'} element={<Dialogs/>}/>
+                    <Route path={'/dialogs/*'} element={<Dialogs
+                        messagesData={state.messagesData}
+                        dialogsData={state.dialogsData}
+                    />}/>
                 </Routes>
             </div>
 
