@@ -6,3 +6,8 @@
 .active {
     color: red;
 }
+
+.friendsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+}

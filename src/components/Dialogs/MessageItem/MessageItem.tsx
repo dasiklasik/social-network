@@ -1,5 +1,5 @@
 import React from "react";
-import {messageType} from "../../../index";
+import { messageType } from "../../../redux/state";
 
 type MessageItemPropsType = {
     messageInfo: messageType

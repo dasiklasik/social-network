@@ -3,16 +3,16 @@ import styles from './profile.module.css'
 import wallpaper from '../../assets/wallpaper.jpg'
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {Posts} from "./Posts/Posts";
-import {postType} from "../../index";
+import {profilePageType} from "../../redux/state";
 
 type ProfilePropsType = {
-    postsData: Array<postType>
+    data: profilePageType
 }
 
 export const Profile = (props: ProfilePropsType) => {
 
     const {
-        postsData
+        data
     } = props
 
     return (
@@ -21,7 +21,7 @@ export const Profile = (props: ProfilePropsType) => {
                 <img src={wallpaper} alt={'wallpaper'}/>
             </div>
             <ProfileInfo/>
-            <Posts postsData={postsData}/>
+            <Posts postsData={data.postsData}/>
         </div>
     )
 }

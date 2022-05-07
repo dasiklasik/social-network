@@ -1,14 +1,12 @@
 import React from "react";
 import styles from './Dialogs.module.css'
-import {v1} from "uuid";
 import {DialogItem} from "./DialogItem/DialogItem";
 import {MessageItem} from "./MessageItem/MessageItem";
-import {dialogType, messageType} from "../../index";
+import {dialogsPageType} from "../../redux/state";
 
 
 type DialogsPropsType = {
-    messagesData: Array<messageType>
-    dialogsData: Array<dialogType>
+    data: dialogsPageType
 }
 
 
@@ -18,8 +16,7 @@ export const Dialogs = (props: DialogsPropsType) => {
 
 
     const {
-        messagesData,
-        dialogsData
+        data,
     } = props
 
 
@@ -29,7 +26,7 @@ export const Dialogs = (props: DialogsPropsType) => {
             <div className={styles.flexWrapper}>
                 <div>
                     <ul>
-                        {dialogsData.map(d => {
+                        {data.dialogsData.map(d => {
                             return (
                                 <DialogItem dialogInfo={d}/>
                             )
@@ -39,7 +36,7 @@ export const Dialogs = (props: DialogsPropsType) => {
                 <div>
                     <ul>
                         {
-                            messagesData.map(m => {
+                            data.messagesData.map(m => {
                                 return (
                                     <MessageItem messageInfo={m}/>
                                 )

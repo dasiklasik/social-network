@@ -4,51 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-import {v1} from "uuid";
+import { state } from './redux/state';
 
-export type postType = {
-    id: string
-    message: string
-    likesCount: number
-}
 
-export type messageType = {
-    id: string
-    message: string
-    myMessage: boolean
-}
-
-export type dialogType = {
-    id: string
-    name: string
-}
-
-export type stateType = {
-    postsData: Array<postType>
-    messagesData: Array<messageType>
-    dialogsData: Array<dialogType>
-}
-
-export const state: stateType = {
-    postsData: [
-        {id: '1', message: 'some message', likesCount: 12},
-        {id: '2', message: 'some message', likesCount: 10},
-        {id: '3', message: 'new message', likesCount: 0},
-    ],
-    messagesData: [
-        {id: v1(), message: 'Hi!', myMessage: false},
-        {id: v1(), message: 'Hello!', myMessage: true},
-        {id: v1(), message: 'How are you?', myMessage: false},
-        {id: v1(), message: 'I am OK', myMessage: true},
-    ],
-    dialogsData: [
-        {id: v1(), name: 'Dasha'},
-        {id: v1(), name: 'Masha'},
-        {id: v1(), name: 'Olly'},
-        {id: v1(), name: 'Andry'},
-        {id: v1(), name: 'Sasha'},
-    ],
-}
 
 
 
