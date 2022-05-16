@@ -3,21 +3,18 @@ import React from "react";
 type PostFormPropsType = {
     newPostText: string
     changePostInputValue: (value: string) => void
+    addPost: () => void
 }
 
 export const PostForm = (props: PostFormPropsType) => {
 
     const {
         newPostText,
-        changePostInputValue
+        changePostInputValue,
+        addPost
     } = props
 
     const postLink = React.createRef<HTMLTextAreaElement>()
-
-    const addPost = () => {
-        let text = postLink.current?.value
-        alert(text)
-    }
 
     const onChangeHandler = () => {
         if (postLink.current) {

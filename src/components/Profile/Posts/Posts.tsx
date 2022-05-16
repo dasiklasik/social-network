@@ -6,19 +6,25 @@ import {PostForm} from "./PostForm";
 type PostsPropsType = {
     profileData: profilePageType
     changePostInputValue: (value: string) => void
+    addPost: () => void
 }
 
 export const Posts = (props: PostsPropsType) => {
 
     const {
         profileData,
-        changePostInputValue
+        changePostInputValue,
+        addPost
     } = props
 
     return (
         <div>
             <h2>Мои посты</h2>
-            <PostForm changePostInputValue={changePostInputValue} newPostText={profileData.newPostText}/>
+            <PostForm
+                changePostInputValue={changePostInputValue}
+                newPostText={profileData.newPostText}
+                addPost={addPost}
+            />
             <div>
                 {profileData.postsData.map(post => (
                     <PostItem message={post.message}/>

@@ -49,6 +49,7 @@ export type stateType = {
 export type storeType = {
     state: stateType
     changePostInputValue: (value: string) => void
+    addPost: () => void
     subscriber: () => void
 }
 
@@ -88,6 +89,12 @@ export const store: storeType = {
     changePostInputValue: (value: string) => {
         store.state.profilePage.newPostText = value
         store.subscriber()
+    },
+    addPost: () => {
+        let message = store.state.profilePage.newPostText
+        store.state.profilePage.postsData.push({id: '4', message, likesCount: 0})
+        store.state.profilePage.newPostText = ''
+        renderDOM()
     },
     subscriber: () => {
         renderDOM()

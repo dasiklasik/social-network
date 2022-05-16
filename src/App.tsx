@@ -30,6 +30,7 @@ const App = (props: AppPropsType) => {
                     <Route path={'/profile'} element={<Profile
                         data={store.state.profilePage}
                         changePostInputValue={store.changePostInputValue}
+                        addPost={store.addPost}
                     />}/>
                     <Route path={'/dialogs/*'} element={<Dialogs data={store.state.dialogsPage}/>}/>
                 </Routes>
