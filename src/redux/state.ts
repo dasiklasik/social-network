@@ -10,12 +10,13 @@ export type postType = {
 
 export type profilePageType = {
     postsData: Array<postType>
-    newPostText: string
+    newPostValue: string
 }
 
 export type dialogsPageType = {
     messagesData: Array<messageType>
     dialogsData: Array<dialogType>
+    newMessageValue: string
 }
 
 export type messageType = {
@@ -50,6 +51,8 @@ export type storeType = {
     state: stateType
     changePostInputValue: (value: string) => void
     addPost: () => void
+    changeMessageInputValue: (value: string) => void
+    addMessage: () => void
     subscriber: () => void
 }
 
@@ -68,7 +71,7 @@ export const store: storeType = {
                 {id: '2', message: 'some message', likesCount: 10},
                 {id: '3', message: 'new message', likesCount: 0},
             ],
-            newPostText: ''
+            newPostValue: ''
         },
         dialogsPage: {
             messagesData: [
@@ -84,17 +87,28 @@ export const store: storeType = {
                 {id: v1(), name: 'Andry'},
                 {id: v1(), name: 'Sasha'},
             ],
+            newMessageValue: ''
         },
     },
     changePostInputValue: (value: string) => {
-        store.state.profilePage.newPostText = value
+        store.state.profilePage.newPostValue = value
         store.subscriber()
     },
     addPost: () => {
-        let message = store.state.profilePage.newPostText
+        let message = store.state.profilePage.newPostValue
         store.state.profilePage.postsData.push({id: '4', message, likesCount: 0})
-        store.state.profilePage.newPostText = ''
+        store.state.profilePage.newPostValue = ''
         renderDOM()
+    },
+    changeMessageInputValue: (value: string) => {
+        store.state.dialogsPage.newMessageValue = value
+        store.subscriber()
+    },
+    addMessage: () => {
+        let message = store.state.dialogsPage.newMessageValue
+        store.state.dialogsPage.messagesData.push({id: v1(), message, myMessage: true})
+        store.state.dialogsPage.newMessageValue = ''
+        store.subscriber()
     },
     subscriber: () => {
         renderDOM()

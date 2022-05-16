@@ -2,6 +2,7 @@ import React from "react";
 import {postType, profilePageType} from "../../../redux/state";
 import {PostItem} from "./PostItem/PostItem";
 import {PostForm} from "./PostForm";
+import {SuperForm} from "../../SuperComponents/SuperForm";
 
 type PostsPropsType = {
     profileData: profilePageType
@@ -20,10 +21,9 @@ export const Posts = (props: PostsPropsType) => {
     return (
         <div>
             <h2>Мои посты</h2>
-            <PostForm
-                changePostInputValue={changePostInputValue}
-                newPostText={profileData.newPostText}
-                addPost={addPost}
+            <SuperForm value={profileData.newPostValue}
+                       changeInputValue={changePostInputValue}
+                       addItem={addPost}
             />
             <div>
                 {profileData.postsData.map(post => (

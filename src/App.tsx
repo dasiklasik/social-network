@@ -32,7 +32,11 @@ const App = (props: AppPropsType) => {
                         changePostInputValue={store.changePostInputValue}
                         addPost={store.addPost}
                     />}/>
-                    <Route path={'/dialogs/*'} element={<Dialogs data={store.state.dialogsPage}/>}/>
+                    <Route path={'/dialogs/*'} element={<Dialogs
+                        data={store.state.dialogsPage}
+                        changeMessageValue={store.changeMessageInputValue}
+                        addMessage={store.addMessage}
+                    />}/>
                 </Routes>
             </div>
 
