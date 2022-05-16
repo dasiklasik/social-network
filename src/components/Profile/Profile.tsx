@@ -7,12 +7,14 @@ import {profilePageType} from "../../redux/state";
 
 type ProfilePropsType = {
     data: profilePageType
+    changePostInputValue: (value: string) => void
 }
 
 export const Profile = (props: ProfilePropsType) => {
 
     const {
-        data
+        data,
+        changePostInputValue
     } = props
 
     return (
@@ -21,7 +23,7 @@ export const Profile = (props: ProfilePropsType) => {
                 <img src={wallpaper} alt={'wallpaper'}/>
             </div>
             <ProfileInfo/>
-            <Posts postsData={data.postsData}/>
+            <Posts changePostInputValue={changePostInputValue} profileData={data}/>
         </div>
     )
 }

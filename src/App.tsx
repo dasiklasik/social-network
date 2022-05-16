@@ -5,18 +5,18 @@ import {Dialogs} from './components/Dialogs/Dialogs';
 import {Header} from "./components/Header/Header";
 import {NavBar} from "./components/NavBar/NavBar";
 import {Profile} from "./components/Profile/Profile";
-import {stateType} from "./redux/state";
+import {stateType, storeType} from "./redux/state";
 
 
 type AppPropsType = {
-    state: stateType
+    store: storeType
 }
 
 
 const App = (props: AppPropsType) => {
 
     const {
-        state
+        store
     } = props
 
     return (
@@ -24,11 +24,14 @@ const App = (props: AppPropsType) => {
 
             <Header/>
             <div className={'flex-content'}>
-                <NavBar data={state.navbar}/>
+                <NavBar data={store.state.navbar}/>
                 <Routes>
                     <Route path={'/'} element={<Navigate to={'/profile'}/>}/>
-                    <Route path={'/profile'} element={<Profile data={state.profilePage}/>}/>
-                    <Route path={'/dialogs/*'} element={<Dialogs data={state.dialogsPage}/>}/>
+                    <Route path={'/profile'} element={<Profile
+                        data={store.state.profilePage}
+                        changePostInputValue={store.changePostInputValue}
+                    />}/>
+                    <Route path={'/dialogs/*'} element={<Dialogs data={store.state.dialogsPage}/>}/>
                 </Routes>
             </div>
 

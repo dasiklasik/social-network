@@ -1,24 +1,26 @@
 import React from "react";
-import { postType } from "../../../redux/state";
+import {postType, profilePageType} from "../../../redux/state";
 import {PostItem} from "./PostItem/PostItem";
 import {PostForm} from "./PostForm";
 
 type PostsPropsType = {
-    postsData: Array<postType>
+    profileData: profilePageType
+    changePostInputValue: (value: string) => void
 }
 
 export const Posts = (props: PostsPropsType) => {
 
     const {
-        postsData
+        profileData,
+        changePostInputValue
     } = props
 
     return (
         <div>
             <h2>Мои посты</h2>
-            <PostForm/>
+            <PostForm changePostInputValue={changePostInputValue} newPostText={profileData.newPostText}/>
             <div>
-                {postsData.map(post => (
+                {profileData.postsData.map(post => (
                     <PostItem message={post.message}/>
                 ))}
             </div>
