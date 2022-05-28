@@ -1,6 +1,5 @@
 import {v1} from "uuid";
 import avatar from '../assets/ava.jpg'
-import {renderDOM} from "../index";
 
 export type postType = {
     id: string
@@ -53,7 +52,8 @@ export type storeType = {
     addPost: () => void
     changeMessageInputValue: (value: string) => void
     addMessage: () => void
-    subscriber: () => void
+    DOMrender: () => void
+    subscriber: (callback: () => void) => void
 }
 
 export const store: storeType = {
@@ -92,25 +92,26 @@ export const store: storeType = {
     },
     changePostInputValue: (value: string) => {
         store.state.profilePage.newPostValue = value
-        store.subscriber()
+        store.DOMrender()
     },
     addPost: () => {
         let message = store.state.profilePage.newPostValue
         store.state.profilePage.postsData.push({id: '4', message, likesCount: 0})
         store.state.profilePage.newPostValue = ''
-        renderDOM()
+        store.DOMrender()
     },
     changeMessageInputValue: (value: string) => {
         store.state.dialogsPage.newMessageValue = value
-        store.subscriber()
+        store.DOMrender()
     },
     addMessage: () => {
         let message = store.state.dialogsPage.newMessageValue
         store.state.dialogsPage.messagesData.push({id: v1(), message, myMessage: true})
         store.state.dialogsPage.newMessageValue = ''
-        store.subscriber()
+        store.DOMrender()
     },
-    subscriber: () => {
-        renderDOM()
+    DOMrender: () => {},
+    subscriber: (callback: () => void) => {
+        store.DOMrender= callback
     }
 }
